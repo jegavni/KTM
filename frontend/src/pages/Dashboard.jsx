@@ -5,6 +5,7 @@ import Events from "./Events";
 import Transactions from "./Transactions";
 import Minutes from "./Minutes";
 import toast from "react-hot-toast";
+import axios from "axios";  
 
 function Dashboard({ auth, setAuth }) {
   const [activeTab, setActiveTab] = useState("Members");
@@ -13,10 +14,20 @@ function Dashboard({ auth, setAuth }) {
     return <Navigate to="/login" />;
   }
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+  try {
+    await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/auth/logout`,
+      {},
+      { withCredentials: true }
+    );
+
     setAuth(false);
     toast.success("Logged out!");
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   const renderContent = () => {
     switch (activeTab) {

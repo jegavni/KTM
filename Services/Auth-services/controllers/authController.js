@@ -125,6 +125,10 @@ export const logout = (req, res) => {
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
   });
+  console.log("User logged out");
 
-  res.json({ message: "Logged out" });
+  return res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
 };
