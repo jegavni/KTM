@@ -16,9 +16,9 @@
 
   "name": "gateway",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon scr/server.js",
-    "start": "node scr/server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   }
 }
