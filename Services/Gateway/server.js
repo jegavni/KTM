@@ -31,6 +31,7 @@ app.use(
     }
   })
 );
+  console.log("Proxying /api/auth to", process.env.AUTH_SERVICE_URL)  
 
 app.use(
   "/api/members",
@@ -42,7 +43,7 @@ app.use(
     }
   })
 );
-
+  console.log("Proxying /api/members to", process.env.MEMBERS_SERVICE_URL)  
 app.listen(process.env.PORT || 5000, () => {
   console.log("Gateway running on port", process.env.PORT || 5000);
 });
