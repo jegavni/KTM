@@ -4,7 +4,7 @@ import cors from "cors";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import dotenv from "dotenv";
 
-dotenv.config({ path: "./development.env" });
+dotenv.config();
 
 const app = express();
 
