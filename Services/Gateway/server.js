@@ -27,9 +27,7 @@ app.use(
     target: process.env.AUTH_SERVICE_URL,
     changeOrigin: true,
 
-    pathRewrite: {
-      "^/api/auth": ""
-    }
+    
   })
 );
   console.log("Proxying /api/auth to", process.env.AUTH_SERVICE_URL)  
@@ -39,9 +37,7 @@ app.use(
   createProxyMiddleware({
     target: process.env.MEMBERS_SERVICE_URL,
     changeOrigin: true,
-    pathRewrite: {
-      "^/api/members": ""
-    }
+    
   })
 );
 
