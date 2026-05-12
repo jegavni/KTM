@@ -43,6 +43,11 @@ app.use(
     }
   })
 );
+
+console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("AUTH_SERVICE_URL:", process.env.AUTH_SERVICE_URL);
+console.log("PORT:", process.env.PORT);
+
   console.log("Proxying /api/members to", process.env.MEMBERS_SERVICE_URL)  
 app.listen(process.env.PORT || 5000, () => {
   console.log("Gateway running on port", process.env.PORT || 5000);
