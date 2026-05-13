@@ -1,7 +1,10 @@
-const API = import.meta.env.VITE_API_URL;
+import axios from "axios";
 
-axios.post(`${API}/api/auth/login`, data);
+console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
 
-axios.get(`${API}/api/members`);
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
+});
 
-axios.post(`${API}/api/events`);
+export default api;

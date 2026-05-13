@@ -21,6 +21,17 @@ function Register() {
   const [preview, setPreview] = useState(null);
   const [errors, setErrors] = useState({});
 
+  const quotes = [
+    "Arise, awake, and stop not till the goal is reached.",
+    "Strength is life; weakness is death.",
+    "You cannot believe in God until you believe in yourself.",
+    "Take risks in your life. If you win, you can lead; if you lose, you can guide.",
+    "The greatest religion is to be true to your own nature."
+  ];
+
+  const randomQuote =
+    quotes[Math.floor(Math.random() * quotes.length)];
+
   const regex = {
     name: /^[a-zA-Z ]{2,30}$/,
     email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -37,7 +48,7 @@ function Register() {
 
     if (!value.trim()) {
       error = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
-    } 
+    }
     else if (regex[key] && !regex[key].test(value)) {
       error = `Invalid ${key}`;
     }
@@ -67,7 +78,7 @@ function Register() {
 
       if (!data[key].trim()) {
         newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
-      } 
+      }
       else if (regex[key] && !regex[key].test(data[key])) {
         newErrors[key] = `Invalid ${key}`;
       }
@@ -145,11 +156,26 @@ function Register() {
             </p>
           </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1551281044-8b9a2c1d8a5d"
-            alt="Illustration"
-            className="rounded-xl"
-          />
+          <div className="relative overflow-hidden rounded-xl">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Swami_Vivekananda.jpg/800px-Swami_Vivekananda.jpg"
+              alt="Swami Vivekananda"
+              className="w-full h-80 object-cover rounded-xl"
+            />
+
+            <div className="absolute inset-0 bg-black/50 flex items-end">
+              <div className="p-6">
+                <p className="text-lg italic text-white">
+                  "Arise, awake, and stop not till the goal is reached."
+                </p>
+
+                <p className="text-lg italic text-white">
+                  "{randomQuote}"
+                </p>
+              </div>
+            </div>
+          </div>
+
 
         </div>
 
@@ -163,7 +189,7 @@ function Register() {
 
             {/* Profile Preview */}
 
-            <div className="flex justify-center mb-2">
+            {/* <div className="flex justify-center mb-2">
 
               {preview ? (
 
@@ -187,13 +213,13 @@ function Register() {
 
               )}
 
-            </div>
+            </div> */}
 
-            <input
+            {/* <input
               type="file"
               onChange={handleImage}
               className="w-full text-sm text-gray-400"
-            />
+            /> */}
 
             {errors.file && (
               <p className="text-red-500 text-sm">{errors.file}</p>
@@ -208,9 +234,8 @@ function Register() {
                 <input
                   type="text"
                   placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
-                  className={`w-full p-3 rounded-lg bg-gray-700 border ${
-                    errors[key] ? "border-red-500" : "border-gray-600"
-                  } text-white`}
+                  className={`w-full p-3 rounded-lg bg-gray-700 border ${errors[key] ? "border-red-500" : "border-gray-600"
+                    } text-white`}
                   onChange={(e) => handleChange(key, e.target.value)}
                 />
 
@@ -229,9 +254,8 @@ function Register() {
               <input
                 type="password"
                 placeholder="Password"
-                className={`w-full p-3 rounded-lg bg-gray-700 border ${
-                  errors.password ? "border-red-500" : "border-gray-600"
-                } text-white`}
+                className={`w-full p-3 rounded-lg bg-gray-700 border ${errors.password ? "border-red-500" : "border-gray-600"
+                  } text-white`}
                 onChange={(e) => handleChange("password", e.target.value)}
               />
 
@@ -242,11 +266,10 @@ function Register() {
               ) : data.password ? (
 
                 <p
-                  className={`text-sm ${
-                    regex.password.test(data.password)
-                      ? "text-green-400"
-                      : "text-gray-400"
-                  }`}
+                  className={`text-sm ${regex.password.test(data.password)
+                    ? "text-green-400"
+                    : "text-gray-400"
+                    }`}
                 >
                   Password must be 8+ chars with uppercase, lowercase, number & special char
                 </p>
