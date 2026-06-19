@@ -1,4 +1,4 @@
-import Compliment from "../models/Compliments.js";
+import Compliment from "../models/compliments.js";
 import Profile from "../models/Profile.js";
 
 export const getCompliments = async (req, res) => {
